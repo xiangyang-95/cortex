@@ -228,7 +228,7 @@ jobs:
         id: make_build
         run: |
           ./install_deps.sh
-          source /opt/intel/oneapi/setvars.sh
+          source /opt/intel/oneapi/setvars.sh --force
           mkdir build && cd build
           cmake -DLLAMA_SYCL=ON -DCMAKE_C_COMPILER=icx -DCMAKE_CXX_COMPILER=icpx -DNITRO_VERSION=${{ needs.set-nitro-version.outputs.version }} ..
           make -j $(nproc)
