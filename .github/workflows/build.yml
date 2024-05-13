@@ -111,7 +111,8 @@ jobs:
               exit 1
             }
             # Get the latest release tag from GitHub API
-            LATEST_TAG=$(get_latest_tag)
+            # LATEST_TAG=$(get_latest_tag)
+            LATEST_TAG=v0.3.22
             
             # Remove the 'v' and append the build number to the version
             NEW_VERSION="${LATEST_TAG#v}-${GITHUB_RUN_NUMBER}"
