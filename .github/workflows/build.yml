@@ -229,6 +229,7 @@ jobs:
         run: |
           ./install_deps.sh
           source /opt/intel/oneapi/setvars.sh --force
+          source /opt/intel/openvino_2024/setupvars.sh
           mkdir build && cd build
           cmake -DLLAMA_SYCL=ON -DCMAKE_C_COMPILER=icx -DCMAKE_CXX_COMPILER=icpx -DNITRO_VERSION=${{ needs.set-nitro-version.outputs.version }} ..
           make -j $(nproc)
@@ -260,6 +261,7 @@ jobs:
         run: |
           cd nitro/
           source /opt/intel/oneapi/setvars.sh --force
+          source /opt/intel/openvino_2024/setupvars.sh
           chmod +x ../.github/scripts/e2e-test-llama-linux-and-mac.sh && ../.github/scripts/e2e-test-llama-linux-and-mac.sh ./nitro ${{ env.LLM_MODEL_URL }} ${{ env.EMBEDDING_MODEL_URL }}
           rm -rf uploads/
 
@@ -279,6 +281,8 @@ jobs:
           fi
           # run e2e testing
           cd nitro
+          source /opt/intel/oneapi/setvars.sh --force
+          source /opt/intel/openvino_2024/setupvars.sh
           chmod +x ../.github/scripts/e2e-test-whisper-linux-and-mac.sh && ../.github/scripts/e2e-test-whisper-linux-and-mac.sh ./nitro ${{ env.WHISPER_MODEL_URL }}
           rm -rf uploads/
 
