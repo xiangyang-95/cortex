@@ -259,6 +259,7 @@ jobs:
         shell: bash
         run: |
           cd nitro/
+          source /opt/intel/oneapi/setvars.sh --force
           chmod +x ../.github/scripts/e2e-test-llama-linux-and-mac.sh && ../.github/scripts/e2e-test-llama-linux-and-mac.sh ./nitro ${{ env.LLM_MODEL_URL }} ${{ env.EMBEDDING_MODEL_URL }}
           rm -rf uploads/
 
