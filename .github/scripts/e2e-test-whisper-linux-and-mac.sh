@@ -45,7 +45,8 @@ response1=$(curl --connect-timeout 60 -o /tmp/response1.log -s -w "%{http_code}"
     --header 'Content-Type: application/json' \
     --data '{
     "model_path": "/tmp/testwhisper",
-    "model_id": "whisper.cpp"
+    "model_id": "whisper.cpp",
+    "openvino_encode_device": "GPU",
 }')
 
 response2=$(
